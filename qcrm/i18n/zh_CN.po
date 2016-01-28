@@ -1,0 +1,158 @@
+# Translation of Based on Odoo Community Server.
+# This file contains the translation of the following modules:
+# 	* qcrm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Based on Odoo Community Server 9.0c-20160121\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-28 09:34+0000\n"
+"PO-Revision-Date: 2016-01-28 17:37+0800\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 1.8.6\n"
+
+#. module: qcrm
+#: selection:crm.lead,year:0
+msgid "2011"
+msgstr "2011级"
+
+#. module: qcrm
+#: selection:crm.lead,year:0
+msgid "2012"
+msgstr "2012级"
+
+#. module: qcrm
+#: selection:crm.lead,year:0
+msgid "2013"
+msgstr "2013级"
+
+#. module: qcrm
+#: selection:crm.lead,year:0
+msgid "2014"
+msgstr "2014级"
+
+#. module: qcrm
+#: selection:crm.lead,year:0
+msgid "2015"
+msgstr "2015级"
+
+#. module: qcrm
+#: selection:crm.lead,year:0
+msgid "2016"
+msgstr "2016级"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_create_uid
+msgid "Created by"
+msgstr "创建于"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_create_date
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_email
+msgid "E-mail"
+msgstr "E-mail"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_id
+msgid "ID"
+msgstr "ID"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school___last_update
+msgid "Last Modified on"
+msgstr "最后修改日"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_write_uid
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_write_date
+msgid "Last Updated on"
+msgstr "最后更新时间"
+
+#. module: qcrm
+#: model:ir.model,name:qcrm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "线索/商机"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_major
+msgid "Major"
+msgstr "专业"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_name
+msgid "Name"
+msgstr "名称"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_opportunity_code
+msgid "Opportunity ID"
+msgstr "Opportunity ID"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_qq
+msgid "QQ"
+msgstr "QQ"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_school_ids
+msgid "School"
+msgstr "学校"
+
+#. module: qcrm
+#: model:ir.model,name:qcrm.model_qcrm_school
+msgid "School List"
+msgstr "学校"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_target_country
+msgid "Target Country"
+msgstr "目标国家"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_target_major
+msgid "TargetMajor"
+msgstr "目标专业"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_venue
+msgid "Venue"
+msgstr "Venue"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_website_message_ids
+msgid "Website Messages"
+msgstr "网站消息"
+
+#. module: qcrm
+#: model:ir.model.fields,help:qcrm.field_crm_lead_website_message_ids
+msgid "Website communication history"
+msgstr "网站沟通记录"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_year
+msgid "Year"
+msgstr "年级"
+
+#. module: qcrm
+#: model:ir.model,name:qcrm.model_event_brand
+msgid "event.brand"
+msgstr ""

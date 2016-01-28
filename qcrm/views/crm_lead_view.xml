@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!--
+            OPPORTUNITY
+        -->
+
+        <!-- Opportunities Form View -->
+        <record model="ir.ui.view" id="crm_case_form_view_oppor">
+            <field name="name">Opportunities</field>
+            <field name="model">crm.lead</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="school_ids"/>
+                    <field name="year"/>
+                    <field name="major"/>
+                    <field name="target_country" widget="many2many_tags"/>
+                    <field name="target_major"/>
+
+
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="replace">
+
+                </xpath>
+                <xpath expr="//field[@name='email_from']" position="replace">
+
+                </xpath>
+
+                <xpath expr="//field[@name='last_activity_id']" position="before">
+                    <field name="qq"/>
+                    <field name="phone"/>
+                    <field name="email_from"/>
+
+
+                </xpath>
+
+                <xpath expr="//field[@name='message_follower_ids']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//page[@name='lead']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
+                <xpath expr="//button[@name='action_schedule_meeting']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- Opportunities Search View -->
+
+        <record model="ir.ui.view" id="crm_lead_view_tree_activity">
+            <field name="name">qcrm.activity.tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_tree_activity"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+
+                    <field name="opportunity_code"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+
+                    <field name="phone"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
