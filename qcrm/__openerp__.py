@@ -8,6 +8,8 @@
     'category': 'Customer Relationship Management',
     'sequence': 5,
     'summary': 'Leads, Opportunities, Activities',
+    'author': 'Qiner Tech',
+    'website': 'http://www.qineronline.com/',
     'description': """
 The generic OpenERP Customer Relationship Management
 ====================================================
@@ -24,11 +26,10 @@ OpenERP will take care of thanking them for their message, automatically routing
 
 
 Dashboard for Qiner_CRM will include:
--------------------------------
+-------------------------------------
 * Planned Revenue by Stage and User (graph)
 * Opportunities by Stage (graph)
 """,
-    'website': 'http://www.qineronline.com/',
     'depends': [
 
         'crm'

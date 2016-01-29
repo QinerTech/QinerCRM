@@ -16,7 +16,7 @@
                     <field name="school_ids"/>
                     <field name="year"/>
                     <field name="major"/>
-                    <field name="target_country" widget="many2many_tags"/>
+                    <field name="target_country_ids" widget="many2many_tags"/>
                     <field name="target_major"/>
 
 

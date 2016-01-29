@@ -56,7 +56,7 @@ class crm_lead(models.Model):
         selection=[('2011', '2011'), ('2012', '2012'), ('2013', '2013'), ('2014', '2014'), ('2015', '2015'), ('2016', '2016')]
     )
 
-    target_country = fields.Many2many(
+    target_country_ids = fields.Many2many(
         string='Target Country',
         required=True,
         readonly=False,
@@ -68,17 +68,6 @@ class crm_lead(models.Model):
         domain=[],
         context={},
         limit=None
-    )
-
-    venue = fields.Char(
-        string='Venue',
-        required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        states={'done': [('readonly', True)], 'confirm': [('readonly', True) ]}
     )
 
     opportunity_code = fields.Char(
@@ -111,4 +100,3 @@ class qrcm_school(models.Model):
         size=50,
         translate=True
     )
-
