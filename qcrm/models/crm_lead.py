@@ -95,6 +95,6 @@ class crm_lead(models.Model):
     @api.model
     def create(self, values):
         if values.get('name', 'New') == 'New':
-            values['name'] = values.get('partner_id', 'Other')
+            values['name'] = self.env['res.partner'].browse(values.get('partner_id')).name
 
         return super(crm_lead, self).create(values)
