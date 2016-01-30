@@ -6,15 +6,19 @@ import time, datetime
 class crm_lead(models.Model):
     _inherit = "crm.lead"
 
-    school_ids = fields.Many2one(
+    partner_id = fields.Many2one(
+        domain = [('is_company','=',0),('customer','=',1)]
+    )
+
+    school_id = fields.Many2one(
         string='School',
         required=True,
         readonly=False,
         index=False,
         default=None,
         help=False,
-        comodel_name='qcrm.school',
-        domain=[],
+        comodel_name='res.partner',
+        domain=[('is_company','=',1),('customer','=',1)],
         context={},
         limit=None
     )
@@ -78,25 +82,19 @@ class crm_lead(models.Model):
         size=20,
     )
 
-    _defaults = {
-        'show_menu': True,
-        'show_tracks': True,
-        'show_track_proposal': False,
-        'date_tz': 'Asia/Shanghai',
-    }
+    @api.onchange('partner_id')
+    def _onchange_partner(self):
+        if self.partner_id:
+            contact_id = self.partner_id.address_get().get('contact', False)
+            if contact_id:
+                contact = self.env['res.partner'].browse(contact_id)
+                self.name = contact.name
+                self.email = contact.email
+                self.phone = contact.phone
 
+    @api.model
+    def create(self, values):
+        if values.get('name', 'New') == 'New':
+            values['name'] = values.get('partner_id', 'Other')
 
-class qrcm_school(models.Model):
-    _name = "qcrm.school"
-    _description = 'School List'
-
-    name = fields.Char(
-        string='Name',
-        required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        size=50,
-        translate=True
-    )
+        return super(crm_lead, self).create(values)
