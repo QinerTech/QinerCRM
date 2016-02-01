@@ -23,22 +23,26 @@ class crm_lead(models.Model):
         limit=None
     )
 
-    major = fields.Char(
+    major_id = fields.Many2one(
         string='Major',
         required=True,
         readonly=False,
         index=True,
         help=False,
+        comodel_name='qcrm.major',
+        ondelete='set null',
         size=50
 
     )
 
-    target_major = fields.Char(
+    target_major_id = fields.Many2one(
         string='TargetMajor',
         required=True,
         readonly=False,
         index=True,
         help=False,
+        comodel_name='qcrm.major',
+        ondelete='set null',
         size=50
     )
 
@@ -74,13 +78,14 @@ class crm_lead(models.Model):
         limit=None
     )
 
+    '''客户编号
     opportunity_code = fields.Char(
         string='Opportunity ID',
         required=False,
         readonly=True,
         index=False,
         size=20,
-    )
+    )'''
 
     @api.onchange('partner_id')
     def _onchange_partner(self):
@@ -98,3 +103,16 @@ class crm_lead(models.Model):
             values['name'] = self.env['res.partner'].browse(values.get('partner_id')).name
 
         return super(crm_lead, self).create(values)
+
+
+class qcrm_major(models.Model):
+    _name = "qcrm.major"
+
+    name = fields.Char(
+        string='Major Name',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        size=50,
+    )
