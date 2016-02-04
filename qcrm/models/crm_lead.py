@@ -7,21 +7,11 @@ class crm_lead(models.Model):
     _inherit = "crm.lead"
 
     partner_id = fields.Many2one(
-        domain = [('is_company','=',0),('customer','=',1)]
-    )
-
-    school_id = fields.Many2one(
         string='School',
         required=True,
-        readonly=False,
-        index=False,
-        default=None,
-        help=False,
-        comodel_name='res.partner',
-        domain=[('is_company','=',1),('customer','=',1)],
-        context={},
-        limit=None
+        domain=[('is_company', '=', 0), ('customer', '=', 1)]
     )
+
 
     major_id = fields.Many2one(
         string='Major',
@@ -36,7 +26,7 @@ class crm_lead(models.Model):
     )
 
     target_major_id = fields.Many2one(
-        string='TargetMajor',
+        string='Target Major',
         required=True,
         readonly=False,
         index=True,
@@ -44,6 +34,10 @@ class crm_lead(models.Model):
         comodel_name='qcrm.major',
         ondelete='set null',
         size=50
+    )
+
+    phone = fields.Char(
+        required=True,
     )
 
     qq = fields.Integer(
@@ -61,7 +55,8 @@ class crm_lead(models.Model):
         readonly=False,
         index=False,
         help=False,
-        selection=[('2011', '2011'), ('2012', '2012'), ('2013', '2013'), ('2014', '2014'), ('2015', '2015'), ('2016', '2016')]
+        selection=[('2011', '2011'), ('2012', '2012'), ('2013', '2013'), ('2014', '2014'), ('2015', '2015'),
+                   ('2016', '2016')]
     )
 
     target_country_ids = fields.Many2many(
@@ -103,6 +98,29 @@ class crm_lead(models.Model):
             values['name'] = self.env['res.partner'].browse(values.get('partner_id')).name
 
         return super(crm_lead, self).create(values)
+
+    def log_next_activity_done(self, cr, uid, ids, context=None, next_activity_name=False):
+
+        to_clear_ids = []
+        for lead in self.browse(cr, uid, ids, context=context):
+            if not lead.next_activity_id:
+                continue
+            body_html = """<div><b>${object.next_activity_id.name}</b></div>
+%if object.title_action:
+<div>${object.title_action}</div>
+%endif"""
+
+            body_html = self.pool['mail.template'].render_template(cr, uid, body_html, 'crm.lead', lead.id,
+                                                                   context=context)
+            print(body_html)
+            to_clear_ids.append(lead.id)
+            self.write(cr, uid, [lead.id], {'last_activity_id': lead.next_activity_id.id}, context=context)
+
+        if to_clear_ids:
+            self.cancel_next_activity(cr, uid, to_clear_ids, context=context)
+
+        print(to_clear_ids)
+        return True
 
 
 class qcrm_major(models.Model):

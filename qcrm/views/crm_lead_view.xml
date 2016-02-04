@@ -1,6 +1,125 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
+
+        <!--
+            LEAD
+        -->
+
+        <!-- lead form view -->
+
+        <record model="ir.ui.view" id="crm_case_form_view_leads">
+            <field name="name">CRM - Leads Form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="replace">
+                    <form string="Name">
+                        <header>
+                            <button name="%(crm.action_crm_lead2opportunity_partner)d" string="Convert to Opportunity"
+                                    type="action"
+                                    help="Convert to Opportunity" class="oe_highlight"/>
+                            <button name="action_set_lost" string="Mark Lost"
+                                    type="object" class="oe_highlight"
+                                    attrs="{'invisible': [('active', '=', False)]}"/>
+                            <field name="stage_id" widget="statusbar" clickable="True"
+                                   domain="['&amp;', ('team_ids', '=', team_id), '|', ('type', '=', type), ('type', '=', 'both')]"
+                                   options="{'fold_field': 'fold'}"
+                                   on_change="onchange_stage_id(stage_id)"/>
+                        </header>
+                        <sheet>
+                            <div class="oe_button_box" name="button_box">
+                                <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive"
+                                        attrs="{'invisible': [('active', '=', True), ('probability', '&lt;', 100)]}">
+                                    <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                                </button>
+                            </div>
+                            <div class="label label-danger pull-right"
+                                 attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}">Lost
+                            </div>
+                            <div class="label label-success pull-right"
+                                 attrs="{'invisible': [('probability', '&lt;', 100)]}">Won
+                            </div>
+                            <div class="oe_title">
+                                <label for="name" class="oe_edit_only" string="Lead"/>
+                                <h1>
+                                    <field name="name" placeholder="Student Name"/>
+
+                                </h1>
+                            </div>
+                            <group>
+                                <group string="Basic Info">
+                                    <!-- Preload all the partner's information -->
+                                    <field name="partner_id" string="School"/>
+                                    <field name="year"/>
+                                    <field name="major_id"/>
+                                    <field name="target_country_ids" widget="many2many_tags"/>
+                                    <field name="target_major_id"/>
+
+                                </group>
+                                <group string="Contact Info">
+                                    <field name="qq"/>
+                                    <field name="phone" widget="phone"/>
+                                    <field name="email_from" widget="email"/>
+                                </group>
+                                <group>
+                                    <field name="user_id" on_change="on_change_user(user_id, context)"
+                                           context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'base.group_sale_salesman_all_leads'], 'team_id': team_id}"/>
+                                    <field name="team_id" widget="selection" domain="[('use_leads','=',True)]"/>
+                                    <field name="type" invisible="1"/>
+                                </group>
+                                <group>
+                                    <field name="source_id"/>
+                                    <field name="probability" attrs="{'invisible': [('active', '=', False)]}"
+                                           groups="base.group_no_one"/>
+                                    <field name="priority" widget="priority"/>
+                                    <field name="tag_ids" widget="many2many_tags"/>
+                                </group>
+                            </group>
+                            <notebook>
+                                <page string="Internal Notes">
+                                    <field name="description"/>
+                                </page>
+                            </notebook>
+                        </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </form>
+
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- lead tree view -->
+        <record model="ir.ui.view" id="crm_case_tree_view_leads">
+            <field name="name">Leads</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Name" decoration-bf="message_needaction==True" decoration-muted="probability == 100">
+                        <field name="date_deadline" invisible="1"/>
+                        <field name="create_date"/>
+                        <field name="name" string="Name"/>
+                        <field name="partner_id"/>
+                        <field name="email_from"/>
+                        <field name="phone"/>
+                        <field name="stage_id"/>
+                        <field name="user_id"/>
+                        <field name="team_id"/>
+                        <field name="probability" invisible="1"/>
+                        <field name="campaign_id" invisible="1"/>
+                        <field name="referred" invisible="1"/>
+                        <field name="medium_id" invisible="1"/>
+                        <field name="message_needaction" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+
         <!--
             OPPORTUNITY
         -->
@@ -13,7 +132,7 @@
             <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
             <field name="arch" type="xml">
                 <xpath expr="//form" position="replace">
-                    <form string="Opportunities">
+                    <form string="Name">
                         <header>
                             <button name="action_set_won" string="Mark Won"
                                     type="object" class="oe_highlight o_wow"
@@ -41,9 +160,9 @@
                                  attrs="{'invisible': [('probability', '&lt;', 100)]}">Won
                             </div>
                             <div class="oe_title">
-                                <label for="name" class="oe_edit_only"/>
+                                <label for="name" string="Name" class="oe_edit_only"/>
                                 <h1>
-                                    <field name="partner_id"/>
+                                    <field name="name" placeholder="e.g. Student Name"/>
                                 </h1>
 
 
@@ -65,10 +184,11 @@
                                         </div>
                                     </div>
                                 </h2>
+
                             </div>
                             <group>
                                 <group>
-                                    <field name="school_id"/>
+                                    <field name="partner_id"/>
                                     <field name="year"/>
                                     <field name="major_id"/>
                                     <field name="target_country_ids" widget="many2many_tags"/>
@@ -79,7 +199,7 @@
                                 <group>
 
                                     <field name="qq"/>
-                                    <field name="phone"/>
+                                    <field name="phone" widget="phone"/>
                                     <field name="email_from"/>
 
                                     <field name="last_activity_id" invisible="1"/>
@@ -117,14 +237,16 @@
                                             <field name="title_action" placeholder="e.g. Discuss proposal"
                                                    attrs="{'invisible': [('next_activity_id', '=', False)]}"/>
                                             <div attrs="{'invisible': [('next_activity_id', '=', False)]}">
-                                                <button name="log_next_activity_done" string="Done" type="object"
+                                                <button name="log_next_activity_s" string="Done" type="object"
                                                         class="btn-link"/>
+
                                                 <button name="cancel_next_activity" string="Cancel" type="object"
                                                         class="btn-link"/>
                                             </div>
                                         </div>
                                     </div>
                                     <field name="date_deadline"/>
+
                                 </group>
 
                                 <group>
@@ -155,6 +277,43 @@
             </field>
         </record>
 
+        <!-- Opportunities Tree View -->
+        <record model="ir.ui.view" id="crm_case_tree_view_oppor">
+            <field name="name">Opportunities Tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree string="Opportunities" decoration-bf="message_needaction==True"
+                          decoration-muted="probability == 100"
+                          decoration-danger="date_action and (date_action &lt; current_date)">
+                        <field name="date_deadline" invisible="1"/>
+                        <field name="create_date"/>
+                        <field name="name" string="Name"/>
+                        <field name="partner_id" string="School"/>
+                        <field name="phone"/>
+                        <field name="year"/>
+                        <field name="date_action"/>
+                        <field name="title_action"/>
+                        <field name="medium_id" invisible="1"/>
+                        <field name="campaign_id" invisible="1"/>
+                        <field name="source_id" invisible="1"/>
+                        <field name="stage_id"/>
+                        <field name="planned_revenue" sum="Expected Revenues"/>
+                        <field name="probability" avg="Avg. of Probability"/>
+                        <field name="team_id"/>
+                        <field name="user_id"/>
+                        <field name="referred" invisible="1"/>
+                        <field name="priority" invisible="1"/>
+                        <field name="message_needaction" invisible="1"/>
+                        <field name="probability" invisible="1"/>
+                        <field name="write_date" invisible="1"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+
         <!-- Opportunities Search View -->
 
         <record model="ir.ui.view" id="crm_lead_view_tree_activity">
@@ -163,21 +322,15 @@
             <field name="inherit_id" ref="crm.crm_lead_view_tree_activity"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="replace">
-                </xpath>
-                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="create_date"/>
+                    <field name="name" string="Name"/>
                     <field name="phone"/>
                     <field name="year"/>
-                    <field name="school_id"/>
-                    <field name="create_date"/>
-
                 </xpath>
                 <xpath expr="//field[@name='title_action']" position="replace">
                     <field name="user_id"/>
                     <field name="last_activity_id"/>
                 </xpath>
-
-
-
             </field>
         </record>
 
@@ -196,7 +349,6 @@
                 </form>
             </field>
         </record>
-
         <record model="ir.ui.view" id="view_major_name_tree">
             <field name="name">Major</field>
             <field name="model">qcrm.major</field>
