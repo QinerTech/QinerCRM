@@ -82,16 +82,6 @@ class crm_lead(models.Model):
         size=20,
     )'''
 
-    @api.onchange('partner_id')
-    def _onchange_partner(self):
-        if self.partner_id:
-            contact_id = self.partner_id.address_get().get('contact', False)
-            if contact_id:
-                contact = self.env['res.partner'].browse(contact_id)
-                self.name = contact.name
-                self.email = contact.email
-                self.phone = contact.phone
-
     @api.model
     def create(self, values):
         if values.get('name', 'New') == 'New':
@@ -121,7 +111,6 @@ class crm_lead(models.Model):
 
         print(to_clear_ids)
         return True
-
 
 class qcrm_major(models.Model):
     _name = "qcrm.major"
