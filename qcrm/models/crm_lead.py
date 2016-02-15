@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from openerp import models, fields, api
-import time, datetime
 
 
 class crm_lead(models.Model):
@@ -11,7 +10,6 @@ class crm_lead(models.Model):
         required=True,
         domain=[('is_company', '=', 0), ('customer', '=', 1)]
     )
-
 
     major_id = fields.Many2one(
         string='Major',
@@ -112,6 +110,7 @@ class crm_lead(models.Model):
 
         print(to_clear_ids)
         return True
+
 
 class qcrm_major(models.Model):
     _name = "qcrm.major"

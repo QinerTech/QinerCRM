@@ -37,6 +37,7 @@ Dashboard for Qiner_CRM will include:
     'data': [
 
         'views/crm_lead_view.xml',
+        'views/customer.xml'
     ],
 
     'test': [
