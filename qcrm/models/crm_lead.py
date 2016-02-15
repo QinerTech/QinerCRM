@@ -49,14 +49,15 @@ class crm_lead(models.Model):
         size=50
     )
 
-    year = fields.Selection(
-        string='Year',
+    year_id = fields.Many2one(
+        string='Grade/Year',
         required=False,
         readonly=False,
-        index=False,
+        index=True,
         help=False,
-        selection=[('2011', '2011'), ('2012', '2012'), ('2013', '2013'), ('2014', '2014'), ('2015', '2015'),
-                   ('2016', '2016')]
+        comodel_name='qcrm.year',
+        ondelete='set null',
+        size=50
     )
 
     target_country_ids = fields.Many2many(
@@ -117,9 +118,23 @@ class qcrm_major(models.Model):
 
     name = fields.Char(
         string='Major Name',
-        required=False,
+        required=True,
         readonly=False,
         index=False,
         default=None,
+        translate=True,
+        size=50,
+    )
+
+class qcrm_year(models.Model):
+    _name = "qcrm.year"
+
+    name = fields.Char(
+        string='Grade/Year',
+        required=True,
+        readonly=False,
+        index=False,
+        default=None,
+        translate=True,
         size=50,
     )

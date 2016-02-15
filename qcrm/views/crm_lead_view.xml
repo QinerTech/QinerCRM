@@ -51,7 +51,7 @@
                                 <group string="Basic Info">
                                     <!-- Preload all the partner's information -->
                                     <field name="partner_id" string="School"/>
-                                    <field name="year"/>
+                                    <field name="year_id"/>
                                     <field name="major_id"/>
                                     <field name="target_country_ids" widget="many2many_tags"/>
                                     <field name="target_major_id"/>
@@ -189,7 +189,7 @@
                             <group>
                                 <group>
                                     <field name="partner_id"/>
-                                    <field name="year"/>
+                                    <field name="year_id"/>
                                     <field name="major_id"/>
                                     <field name="target_country_ids" widget="many2many_tags"/>
                                     <field name="target_major_id"/>
@@ -292,7 +292,7 @@
                         <field name="name" string="Name"/>
                         <field name="partner_id" string="School"/>
                         <field name="phone"/>
-                        <field name="year"/>
+                        <field name="year_id"/>
                         <field name="date_action"/>
                         <field name="title_action"/>
                         <field name="medium_id" invisible="1"/>
@@ -315,7 +315,6 @@
 
 
         <!-- Opportunities Search View -->
-
         <record model="ir.ui.view" id="crm_lead_view_tree_activity">
             <field name="name">qcrm.activity.tree</field>
             <field name="model">crm.lead</field>
@@ -325,7 +324,7 @@
                     <field name="create_date"/>
                     <field name="name" string="Name"/>
                     <field name="phone"/>
-                    <field name="year"/>
+                    <field name="year_id"/>
                 </xpath>
                 <xpath expr="//field[@name='title_action']" position="replace">
                     <field name="user_id"/>
@@ -368,7 +367,43 @@
         </record>
 
         <menuitem name="Major" id="menu_major_config"
-                  action="action_major_config" parent="base.menu_sales" sequence="9"/>
+                  action="action_major_config" parent="base.menu_sale_config" sequence="1"/>
+
+        <!-- Year Search View -->
+        <record model="ir.ui.view" id="view_year_name_form">
+            <field name="name">Grade/Year</field>
+            <field name="model">qcrm.year</field>
+            <field name="arch" type="xml">
+                <form string="Grade/Year">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group></group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_year_name_tree">
+            <field name="name">Grade/Year</field>
+            <field name="model">qcrm.year</field>
+            <field name="arch" type="xml">
+                <tree string="Grade/Year">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_year_config">
+            <field name="name">Grade/Year</field>
+            <field name="res_model">qcrm.year</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem name="Grade/Year" id="menu_year_config"
+                  action="action_year_config" parent="base.menu_sale_config" sequence="2"/>
 
     </data>
 </openerp>
