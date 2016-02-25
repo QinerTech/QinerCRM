@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Based on Odoo Community Server 9.0c-20160121\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-28 09:34+0000\n"
-"PO-Revision-Date: 2016-01-28 17:37+0800\n"
+"POT-Creation-Date: 2016-02-01 09:30+0000\n"
+"PO-Revision-Date: 2016-02-01 17:31+0800\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,72 +18,71 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 
 #. module: qcrm
-#: selection:crm.lead,year:0
-msgid "2011"
-msgstr "2011级"
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid ""
+"<span class=\"oe_form_field\" attrs=\"{'invisible': ['|', ('next_activity_id', '=', False), ('date_action', '=', False)]}\">\n"
+"                                                 on </span>"
+msgstr ""
+"<span class=\"oe_form_field\" attrs=\"{'invisible': ['|', ('next_activity_id', '=', False), ('date_action', '=', False)]}\">\n"
+"                                                 on </span>"
 
 #. module: qcrm
-#: selection:crm.lead,year:0
-msgid "2012"
-msgstr "2012级"
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "<span class=\"oe_grey\">at</span>"
+msgstr "<span class=\"oe_grey\">at</span>"
 
 #. module: qcrm
-#: selection:crm.lead,year:0
-msgid "2013"
-msgstr "2013级"
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Cancel"
+msgstr "取消"
 
 #. module: qcrm
-#: selection:crm.lead,year:0
-msgid "2014"
-msgstr "2014级"
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Choose a date..."
+msgstr "选择一个日期。。。。。。"
 
 #. module: qcrm
-#: selection:crm.lead,year:0
-msgid "2015"
-msgstr "2015级"
-
-#. module: qcrm
-#: selection:crm.lead,year:0
-msgid "2016"
-msgstr "2016级"
-
-#. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_create_uid
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_create_uid
 msgid "Created by"
-msgstr "创建于"
+msgstr "创建人"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_create_date
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_create_date
 msgid "Created on"
 msgstr "创建时间"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_display_name
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_display_name
 msgid "Display Name"
 msgstr "显示名称"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_email
-msgid "E-mail"
-msgstr "E-mail"
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Done"
+msgstr "完成"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_id
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_id
 msgid "ID"
 msgstr "ID"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school___last_update
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Internal Notes"
+msgstr "内部备注"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major___last_update
 msgid "Last Modified on"
 msgstr "最后修改日"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_write_uid
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_write_uid
 msgid "Last Updated by"
 msgstr "最后更新人"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_write_date
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_write_date
 msgid "Last Updated on"
 msgstr "最后更新时间"
 
@@ -93,14 +92,45 @@ msgid "Lead/Opportunity"
 msgstr "线索/商机"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_major
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Lost"
+msgstr "丢失"
+
+#. module: qcrm
+#: model:ir.actions.act_window,name:qcrm.action_major_config
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_major_id
+#: model:ir.ui.menu,name:qcrm.menu_major_config
 msgid "Major"
 msgstr "专业"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_qcrm_school_name
-msgid "Name"
-msgstr "名称"
+#: model:ir.actions.act_window,name:qcrm.action_year_config
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_year_id
+#: model:ir.ui.menu,name:qcrm.menu_year_config
+msgid "Grade/Year"
+msgstr "年级"
+
+#. module: qcrm
+#: model:ir.model.fields,field_description:qcrm.field_qcrm_major_name
+#: model:ir.ui.view,arch_db:qcrm.view_major_name_form
+#: model:ir.ui.view,arch_db:qcrm.view_major_name_tree
+msgid "Major Name"
+msgstr "专业"
+
+#. module: qcrm
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Mark Lost"
+msgstr "标记失去"
+
+#. module: qcrm
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Mark Won"
+msgstr "标记为已赢得"
+
+#. module: qcrm
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Opportunities"
+msgstr "商机"
 
 #. module: qcrm
 #: model:ir.model.fields,field_description:qcrm.field_crm_lead_opportunity_code
@@ -113,100 +143,36 @@ msgid "QQ"
 msgstr "QQ"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_school_ids
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_school_id
 msgid "School"
 msgstr "学校"
 
 #. module: qcrm
-#: model:ir.model,name:qcrm.model_qcrm_school
-msgid "School List"
-msgstr "学校"
-
-#. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_target_country
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_target_country_ids
 msgid "Target Country"
 msgstr "目标国家"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_target_major
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_target_major_id
 msgid "TargetMajor"
 msgstr "目标专业"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_venue
-msgid "Venue"
-msgstr "Venue"
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "Won"
+msgstr "赢得"
 
 #. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_website_message_ids
-msgid "Website Messages"
-msgstr "网站消息"
-
-#. module: qcrm
-#: model:ir.model.fields,help:qcrm.field_crm_lead_website_message_ids
-msgid "Website communication history"
-msgstr "网站沟通记录"
-
-#. module: qcrm
-#: model:ir.model.fields,field_description:qcrm.field_crm_lead_year
-msgid "Year"
+#: model:ir.model.fields,field_description:qcrm.field_crm_lead_year_id
+msgid "Grade/Year"
 msgstr "年级"
 
 #. module: qcrm
-#: model:ir.model,name:qcrm.model_event_brand
-msgid "event.brand"
-msgstr ""
+#: model:ir.ui.view,arch_db:qcrm.crm_case_form_view_oppor
+msgid "e.g. Discuss proposal"
+msgstr "例如.讨论提案"
 
-########################################################################
-# Qiner_Gavin: Overwrite translation items of parent modules
-#
-
-#. module: crm
-#: model:ir.actions.act_window,name:crm.crm_lead_opportunities_tree_view
-#: model:ir.actions.server,name:crm.action_your_pipeline
-#: model:ir.ui.menu,name:crm.menu_crm_opportunities
-#: model:ir.ui.view,arch_db:crm.crm_planner
-msgid "Your Pipeline"
-msgstr "我的跟进"
-
-
-#. module: crm
-#: model:ir.actions.act_window,name:crm.crm_lead_action_activities
-#: model:ir.ui.menu,name:crm.crm_lead_menu_activities
-msgid "Next Activities"
-msgstr "下一次跟进"
-
-#. module: crm
-#: model:ir.model.fields,field_description:crm.field_crm_lead_next_activity_id
-#: model:ir.ui.view,arch_db:crm.crm_lead_view_tree_activity
-msgid "Next Activity"
-msgstr "下一次跟进"
-
-#. module: crm
-#: model:ir.ui.menu,name:crm.crm_opportunity_report_menu
-#: model:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
-msgid "Pipeline"
-msgstr "跟进"
-
-#. module: crm
-#: model:ir.actions.act_window,name:crm.action_report_crm_opportunity_salesteam
-#: model:ir.actions.act_window,name:crm.crm_opportunity_report_action
-#: model:ir.actions.act_window,name:crm.crm_opportunity_report_action_graph
-#: model:ir.ui.view,arch_db:crm.crm_opportunity_report_view_graph
-#: model:ir.ui.view,arch_db:crm.crm_opportunity_report_view_pivot
-#: model:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
-msgid "Pipeline Analysis"
-msgstr "跟进分析"
-
-
-#. module: mail
-#: model:ir.model.fields,field_description:mail.field_mail_compose_message_is_log
-msgid "Log an Internal Note"
-msgstr "添加跟进记录"
-
-#. module: mail
-#. openerp-web
-#: code:addons/mail/static/src/xml/chatter.xml:75
-#, python-format
-msgid "Log an internal note"
-msgstr "添加跟进记录"
+#. module: qcrm
+#: model:ir.model,name:qcrm.model_qcrm_major
+msgid "qcrm.major"
+msgstr "qcrm.major"
